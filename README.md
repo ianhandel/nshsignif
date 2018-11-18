@@ -1,6 +1,6 @@
 # nshsignif
 
-The goal of nshsignif is to ...
+Tools to produce significance table from study summaries.
 
 ## Installation
 
@@ -17,6 +17,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 ## basic example code
+library(nshsignif)
 parse_pvalue(c("P = 0.05", "P < 0.05"), alpha = 0.05)
 ```
 
