@@ -4,12 +4,15 @@
 \alias{parse_pvalue}
 \title{Report significance}
 \usage{
-parse_pvalue(pvals, alpha = 0.05)
+parse_pvalue(pvals, alpha = 0.05, codes = c(sig = "S", nonsig = "NS",
+  nontest = "not-tested"))
 }
 \arguments{
 \item{pvals}{Character vector of p-values to parse.}
 
 \item{alpha}{Critical test size for deciding on significance.}
+
+\item{codes}{Codes to return - a names vector - in form c(sig = "code for significance", nonsig = "code for non-significant", nontest = "code for not tested or missing").}
 }
 \value{
 Character vector of "S" (for significant), "NS" (not significant)
