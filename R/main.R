@@ -38,10 +38,14 @@ parse_pvalue <- function(pvals, alpha = 0.05) {
 #'
 #' @export
 make_studyid <- function(bridge, author, year){
+
+  # CRAN global variable fix
+  author_year <- study <- NULL
+
   bridge <- as.character(bridge)
   df <- dplyr::data_frame(bridge, author, year)
   df <- dplyr::distinct(df)
-  df <- mutate(df, author_year = dplyr::if_else(!is.na(author) & !is.na(year),
+  df <- dplyr::mutate(df, author_year = dplyr::if_else(!is.na(author) & !is.na(year),
                                                 paste0(author, "_", year),
                                                 NA_character_))
   df <- dplyr::group_by(df, author_year)
