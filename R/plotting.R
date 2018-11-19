@@ -105,8 +105,8 @@ plot_signif_base <- function(df, x, y, signif,
   # axis text
   x_labels <- unique(data.frame(x_dat, as.numeric(factor(x_dat))))
   y_labels <- unique(data.frame(y_dat, as.numeric(factor(y_dat))))
-  text(x_labels[[2]], -1, x_labels[[1]], srt = 90, pos = 1, ...)
-  text(-1, y_labels[[2]], y_labels[[1]], pos = 2, ...)
+  text(x_labels[[2]], -1, x_labels[[1]], srt = 90, adj = 1, ...)
+  text(-1, y_labels[[2]], y_labels[[1]], adj = 1, ...)
 
   # the grid
   abline(v = 0:n_x + 0.5)
@@ -120,5 +120,5 @@ plot_signif_base <- function(df, x, y, signif,
 # plot_signif(ggplot2::mpg, manufacturer, class, drv,
 #   pal = c("4" = "red", "f" = "blue", "r" = "orange"))
 #
-# plot_signif_base(ggplot2::mpg, manufacturer, class, drv,
-#   pal = c("4" = "red", "f" = "blue", "r" = "orange"))
+plot_signif_base(ggplot2::mpg, manufacturer, class, drv,
+  pal = c("4" = "red", "f" = "blue", "r" = "orange"))
