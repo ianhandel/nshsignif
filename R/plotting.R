@@ -61,6 +61,7 @@ plot_signif <- function(df, x, y, signif,
 #' @param signif Unquoted significance column
 #' @param pal Colours for codes
 #' @param margins vector of x and y margins for text
+#' @param ... other arguments for plotting
 #'
 #' @examples
 #' plot_signif_base(ggplot2::mpg, manufacturer, class, drv,
@@ -71,7 +72,7 @@ plot_signif_base <- function(df, x, y, signif,
                              pal = c("S" = "red",
                                       "NS" = "green",
                                       "not-tested" = "grey50"),
-                             margins = c(3, 3)) {
+                             margins = c(3, 3), ...) {
 
   # some rlang stuff
   x <- rlang::enquo(x)
@@ -95,17 +96,17 @@ plot_signif_base <- function(df, x, y, signif,
        xlab = "", ylab = "",
        xlim = c(-margins[[1]], n_x + 0.5),
        ylim = c(-margins[[1]], n_y + 0.5),
-       xaxs = "i", yaxs = "i")
+       xaxs = "i", yaxs = "i", ...)
 
   # the points
   points(as.numeric(factor(x_dat)), as.numeric(factor(y_dat)),
-         pch = 20, col = cols, cex= 3)
+         pch = 20, col = cols, cex= 3, ...)
 
   # axis text
   x_labels <- unique(data.frame(x_dat, as.numeric(factor(x_dat))))
   y_labels <- unique(data.frame(y_dat, as.numeric(factor(y_dat))))
-  text(x_labels[[2]], -1, x_labels[[1]], srt = 90)
-  text(-1, y_labels[[2]], y_labels[[1]])
+  text(x_labels[[2]], -1, x_labels[[1]], srt = 90, pos = 1, ...)
+  text(-1, y_labels[[2]], y_labels[[1]], pos = 2, ...)
 
   # the grid
   abline(v = 0:n_x + 0.5)
