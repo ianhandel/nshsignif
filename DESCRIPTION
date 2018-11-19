@@ -14,7 +14,9 @@ Imports:
     dplyr,
     purrr,
     readr,
-    stringr
+    stringr,
+    ggplot2,
+    rlang
 RoxygenNote: 6.1.1
 Suggests: 
     testthat

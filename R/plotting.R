@@ -1,0 +1,84 @@
+#' Plot factor vs factor by significance code (ggplot2)
+#'
+#' @param df Dataframe
+#' @param x Unquoted x column
+#' @param y Unquoted y column
+#' @param signif Unquoted significance column
+#' @param cols Colours [todo]
+#'
+#' @export
+plot_signif <- function(df, x, y, signif, cols = 1:3) {
+  x <- rlang::enquo(x)
+  y <- rlang::enquo(y)
+  n_x <- length(unique(dplyr::pull(df, !!x)))
+  n_y <- length(unique(dplyr::pull(df, !!y)))
+
+  signif <- rlang::enquo(signif)
+
+  ggplot2::ggplot(df) +
+    ggplot2::aes(x = !!x, y = !!y, colour = !!signif) +
+    ggplot2::geom_point(size = 5) +
+    ggplot2::geom_hline(
+      yintercept = seq(1, n_y + 1) - 0.5,
+      colour = "grey50"
+    ) +
+    ggplot2::geom_vline(
+      xintercept = seq(1, n_x + 1) - 0.5,
+      colour = "grey50"
+    ) +
+    ggplot2::scale_x_discrete(position = "top") +
+    ggplot2::scale_y_discrete() +
+    ggplot2::theme_bw() +
+    ggplot2::theme(
+      axis.ticks = ggplot2::element_blank(),
+      panel.grid = ggplot2::element_blank(),
+      axis.text.x = ggplot2::element_text(angle = 90),
+      axis.text.y = ggplot2::element_text(),
+      legend.position = "none",
+      panel.border = ggplot2::element_blank()
+    ) +
+    ggplot2::scale_color_manual(values = cols) +
+    ggplot2::labs(
+      x = "",
+      y = ""
+    ) +
+    ggplot2::coord_equal()
+}
+
+#' Plot factor vs factor by significance code (base)
+#'
+#' @param df Dataframe
+#' @param x Unquoted x column
+#' @param y Unquoted y column
+#' @param signif Unquoted significance column
+#' @param cols Colours [todo]
+#'
+#' @export
+plot_signif_base <- function(df, x, y, signif, cols = 1:3) {
+  x <- rlang::enquo(x)
+  y <- rlang::enquo(y)
+  x_dat <- dplyr::pull(df, !!x)
+  y_dat <- dplyr::pull(df, !!y)
+  n_x <- length(unique(x_dat))
+  n_y <- length(unique(y_dat))
+
+  plot(x_dat, y_dat,
+       type = "n", axes = FALSE,
+       xlab = "", ylab = "",
+       xlim = c(-3, n_x + 0.5), ylim = c(-3, n_y + 0.5),
+       xaxs = "i", yaxs = "i")
+  points(as.numeric(factor(x_dat)), as.numeric(factor(y_dat)),
+         pch = 20, col = cols, cex= 3)
+  x_labels <- unique(data.frame(x_dat, as.numeric(factor(x_dat))))
+  y_labels <- unique(data.frame(y_dat, as.numeric(factor(y_dat))))
+
+  text(x_labels[[2]], -1, x_labels[[1]], srt = 90)
+  text(-1, y_labels[[2]], y_labels[[1]])
+
+  abline(v = 0:n_x + 0.5)
+  abline(h = 0:n_y + 0.5)
+
+  box()
+}
+
+

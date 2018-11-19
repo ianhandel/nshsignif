@@ -3,3 +3,5 @@
 export(make_studyid)
 export(make_unique)
 export(parse_pvalue)
+export(plot_signif)
+export(plot_signif_base)
