@@ -4,7 +4,8 @@
 \alias{plot_signif}
 \title{Plot factor vs factor by significance code (ggplot2)}
 \usage{
-plot_signif(df, x, y, signif, cols = 1:3)
+plot_signif(df, x, y, signif, pal = c(S = "red", NS = "green",
+  `not-tested` = "grey50"))
 }
 \arguments{
 \item{df}{Dataframe}
@@ -15,8 +16,13 @@ plot_signif(df, x, y, signif, cols = 1:3)
 
 \item{signif}{Unquoted significance column}
 
-\item{cols}{Colours [todo]}
+\item{pal}{Colours [todo]}
 }
 \description{
 Plot factor vs factor by significance code (ggplot2)
+}
+\examples{
+plot_signif(ggplot2::mpg, manufacturer, class, drv,
+pal = c("4" = "red", "f" = "blue", "r" = "orange"))
+
 }
