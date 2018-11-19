@@ -4,7 +4,7 @@
 #' @param x Unquoted x column
 #' @param y Unquoted y column
 #' @param signif Unquoted significance column
-#' @param pal Colours [todo]
+#' @param pal Colours for codes
 #' @examples
 #' plot_signif(ggplot2::mpg, manufacturer, class, drv,
 #' pal = c("4" = "red", "f" = "blue", "r" = "orange"))
@@ -59,7 +59,9 @@ plot_signif <- function(df, x, y, signif,
 #' @param x Unquoted x column
 #' @param y Unquoted y column
 #' @param signif Unquoted significance column
-#' @param pal Colours [todo]
+#' @param pal Colours for codes
+#' @param margins vector of x and y margins for text
+#'
 #' @examples
 #' plot_signif_base(ggplot2::mpg, manufacturer, class, drv,
 #' pal = c("4" = "red", "f" = "blue", "r" = "orange"))
@@ -68,7 +70,8 @@ plot_signif <- function(df, x, y, signif,
 plot_signif_base <- function(df, x, y, signif,
                              pal = c("S" = "red",
                                       "NS" = "green",
-                                      "not-tested" = "grey50")) {
+                                      "not-tested" = "grey50"),
+                             margins = c(3, 3)) {
 
   # some rlang stuff
   x <- rlang::enquo(x)
@@ -90,7 +93,8 @@ plot_signif_base <- function(df, x, y, signif,
        as.numeric(factor(y_dat)),
        type = "n", axes = FALSE,
        xlab = "", ylab = "",
-       xlim = c(-3, n_x + 0.5), ylim = c(-3, n_y + 0.5),
+       xlim = c(-margins[[1]], n_x + 0.5),
+       ylim = c(-margins[[1]], n_y + 0.5),
        xaxs = "i", yaxs = "i")
 
   # the points

@@ -16,7 +16,7 @@ plot_signif(df, x, y, signif, pal = c(S = "red", NS = "green",
 
 \item{signif}{Unquoted significance column}
 
-\item{pal}{Colours [todo]}
+\item{pal}{Colours for codes}
 }
 \description{
 Plot factor vs factor by significance code (ggplot2)

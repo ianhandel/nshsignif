@@ -5,7 +5,7 @@
 \title{Plot factor vs factor by significance code (base)}
 \usage{
 plot_signif_base(df, x, y, signif, pal = c(S = "red", NS = "green",
-  `not-tested` = "grey50"))
+  `not-tested` = "grey50"), margins = c(3, 3))
 }
 \arguments{
 \item{df}{Dataframe}
@@ -16,7 +16,9 @@ plot_signif_base(df, x, y, signif, pal = c(S = "red", NS = "green",
 
 \item{signif}{Unquoted significance column}
 
-\item{pal}{Colours [todo]}
+\item{pal}{Colours for codes}
+
+\item{margins}{vector of x and y margins for text}
 }
 \description{
 Plot factor vs factor by significance code (base)
