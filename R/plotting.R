@@ -95,7 +95,7 @@ plot_signif_base <- function(df, x, y, signif,
        type = "n", axes = FALSE,
        xlab = "", ylab = "",
        xlim = c(-margins[[1]], n_x + 0.5),
-       ylim = c(-margins[[1]], n_y + 0.5),
+       ylim = c(-margins[[2]], n_y + 0.5),
        xaxs = "i", yaxs = "i", ...)
 
   # the points
