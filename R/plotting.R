@@ -60,8 +60,9 @@ plot_signif <- function(df, x, y, signif,
 #' @param y Unquoted y column
 #' @param signif Unquoted significance column
 #' @param pal Colours for codes
-#' @param margins vector of x and y margins for text
-#' @param ... other arguments for plotting
+#' @param margins Vector of x and y margins for text
+#' @param cex Point size for plots
+#' @param ... Other arguments for plotting
 #'
 #' @examples
 #' plot_signif_base(ggplot2::mpg, manufacturer, class, drv,
@@ -72,7 +73,7 @@ plot_signif_base <- function(df, x, y, signif,
                              pal = c("S" = "red",
                                       "NS" = "green",
                                       "not-tested" = "grey50"),
-                             margins = c(3, 3), ...) {
+                             margins = c(3, 3), cex = 3, ...) {
 
   # some rlang stuff
   x <- rlang::enquo(x)
