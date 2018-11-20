@@ -120,5 +120,5 @@ plot_signif_base <- function(df, x, y, signif,
 # plot_signif(ggplot2::mpg, manufacturer, class, drv,
 #   pal = c("4" = "red", "f" = "blue", "r" = "orange"))
 #
-plot_signif_base(ggplot2::mpg, manufacturer, class, drv,
-  pal = c("4" = "red", "f" = "blue", "r" = "orange"))
+# plot_signif_base(ggplot2::mpg, manufacturer, class, drv,
+#   pal = c("4" = "red", "f" = "blue", "r" = "orange"))
